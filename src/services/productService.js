@@ -2,7 +2,12 @@ export async function getProductList(searchTerm) {
   // const response = await fetch(
   //   `http://localhost:8080/products/search${searchTerm ? searchTerm : ""}`
   // );
-  const response = await fetch(`${process.env.REACT_APP_HOST}/products`);
+  const response = await fetch(`${process.env.REACT_APP_HOST}/products`, {
+    method: "GET",
+    headers: {
+      "access-control-allow-origin": "*",
+    },
+  });
   if (!response.ok) {
     // eslint-disable-next-line no-throw-literal
     throw {
@@ -14,7 +19,12 @@ export async function getProductList(searchTerm) {
   return data;
 }
 export async function getProduct(id) {
-  const response = await fetch(`${process.env.REACT_APP_HOST}/products/${id}`);
+  const response = await fetch(`${process.env.REACT_APP_HOST}/products/${id}`, {
+    method: "GET",
+    headers: {
+      "access-control-allow-origin": "*",
+    },
+  });
   if (!response.ok) {
     // eslint-disable-next-line no-throw-literal
     throw {
@@ -28,7 +38,13 @@ export async function getProduct(id) {
 
 export async function getFeaturedList() {
   const response = await fetch(
-    `${process.env.REACT_APP_HOST}/products/featured_Products`
+    `${process.env.REACT_APP_HOST}/products/featured_Products`,
+    {
+      method: "GET",
+      headers: {
+        "access-control-allow-origin": "*",
+      },
+    }
   );
   if (!response.ok) {
     // eslint-disable-next-line no-throw-literal
